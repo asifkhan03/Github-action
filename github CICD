@@ -1,0 +1,61 @@
+The CICD file must be in the home-directory
+
+.github
+    workflows
+        cicd.yml
+
+
+Add secrets : If your workflow requires API keys or tokens, go to
+Settings → Secrets and variables → Actions → New repository secret 
+
+Types of GitHub Actions Pipelines :
+1. Push-Based Pipelines
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+
+2. Pull Request Pipelines
+on:
+  pull_request:
+    branches:
+      - main
+
+
+3. Tag-Based Pipelines
+on:
+  push:
+    tags:
+      - 'v*'  # Runs for any tag starting with 'v'
+
+
+4. Scheduled Pipelines (Cron Jobs) Runs at a specific time
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs daily at midnight UTC
+
+
+5. Manual Trigger (Workflow Dispatch)
+Allows manually triggering workflows from the GitHub UI or API.
+
+on:
+  workflow_dispatch:
+
+
+6. Issue/PR-Based Pipelines
+Triggered when an issue or PR is opened, labeled, or assigned.
+
+on:
+  issues:
+    types: [opened, labeled]
+
+
+7. Reusable Workflows
+Allows calling one workflow from another, improving modularity.
+
+on:
+  workflow_call:
+
+
